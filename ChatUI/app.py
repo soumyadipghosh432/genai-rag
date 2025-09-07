@@ -103,8 +103,19 @@ def export_pdf():
         chat_history = session.get('chat_history', [])
         session_id = session.get('session_id', 'unknown')
         
+        print(f"Debug - Session ID: {session_id}")
+        print(f"Debug - Chat history length: {len(chat_history)}")
+        print(f"Debug - Session keys: {list(session.keys())}")
+        
         if not chat_history:
-            return jsonify({'error': 'No chat history to export'}), 400
+            return jsonify({
+                'error': 'No chat history to export. Please send at least one message before exporting.',
+                'debug': {
+                    'session_id': session_id,
+                    'chat_history_length': len(chat_history),
+                    'session_keys': list(session.keys())
+                }
+            }), 400
         
         # Generate PDF
         pdf_path = generate_chat_pdf(chat_history, session_id)
@@ -115,6 +126,7 @@ def export_pdf():
                         mimetype='application/pdf')
                         
     except Exception as e:
+        print(f"PDF Export Error: {str(e)}")
         return jsonify({'error': f'Failed to generate PDF: {str(e)}'}), 500
 
 @app.route('/clear_chat', methods=['POST'])

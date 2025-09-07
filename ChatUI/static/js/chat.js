@@ -13,6 +13,14 @@ class ChatUI {
         this.startTimeUpdater();
         this.autoResizeTextarea();
         this.scrollToBottom();
+        this.setWelcomeMessageTime();
+    }
+
+    setWelcomeMessageTime() {
+        const welcomeTimeElement = document.getElementById('welcomeTime');
+        if (welcomeTimeElement) {
+            welcomeTimeElement.textContent = this.getCurrentTimestamp();
+        }
     }
 
     initializeEventListeners() {
@@ -217,6 +225,10 @@ class ChatUI {
                 // Clear chat messages except welcome message
                 const messages = this.chatMessages.querySelectorAll('.message:not(.welcome-message)');
                 messages.forEach(message => message.remove());
+                
+                // Reset message count
+                this.messageCount = 0;
+                this.updateExportButtonState();
                 
                 this.showToast('Chat cleared successfully!', 'success');
             } else {

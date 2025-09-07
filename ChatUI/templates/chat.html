@@ -38,7 +38,7 @@
                     <div class="message-text">
                         Hello! I'm your AI Assistant. How can I help you today?
                     </div>
-                    <div class="message-time">{{ moment().format('HH:mm:ss') }}</div>
+                    <div class="message-time" id="welcomeTime"></div>
                 </div>
             </div>
 
@@ -48,7 +48,9 @@
                 <div class="message user-message" data-message-id="{{ loop.index0 * 2 }}">
                     <div class="message-content">
                         <div class="message-text">{{ entry.user_message }}</div>
-                        <div class="message-time">{{ entry.timestamp[:19] | replace('T', ' ') }}</div>
+                        <div class="message-time">
+                            {{ entry.timestamp.split('T')[0] }} {{ entry.timestamp.split('T')[1][:8] }}
+                        </div>
                     </div>
                     <div class="user-avatar">
                         <i class="fas fa-user"></i>
@@ -64,14 +66,14 @@
                         <div class="message-text">{{ entry.ai_response }}</div>
                         <div class="message-footer">
                             <div class="message-meta">
-                                <span class="message-time">{{ entry.timestamp[:19] | replace('T', ' ') }}</span>
+                                <span class="message-time">{{ entry.timestamp.split('T')[0] }} {{ entry.timestamp.split('T')[1][:8] }}</span>
                                 <span class="response-time">Response time: {{ entry.response_time }}s</span>
                                 <span class="token-count">
                                     <i class="fas fa-coins"></i> 
                                     In: {{ entry.input_tokens }} | Out: {{ entry.output_tokens }}
                                 </span>
                             </div>
-                            <button class="copy-btn" onclick="copyToClipboard(this)" data-text="{{ entry.ai_response }}">
+                            <button class="copy-btn" onclick="copyToClipboard(this)" data-text="{{ entry.ai_response|e }}">
                                 <i class="fas fa-copy"></i>
                             </button>
                         </div>
