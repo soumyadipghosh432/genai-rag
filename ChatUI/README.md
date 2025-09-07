@@ -2,7 +2,7 @@
 
 A professional, responsive chat interface built with Flask that integrates seamlessly with FastAPI backends. Features a modern white and purple theme with real-time messaging, PDF export, and comprehensive chat management.
 
-![Chat UI Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen) ![Python](https://img.shields.io/badge/Python-3.7+-blue) ![Flask](https://img.shields.io/badge/Flask-2.3+-red) ![License](https://img.shields.io/badge/License-MIT-yellow)
+![Chat UI Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen) ![Python](https://img.shields.io/badge/Python-3.7+-blue) ![Flask](https://img.shields.io/badge/Flask-2.3+-red)
 
 ## ✨ Features
 
@@ -411,9 +411,6 @@ def log_response_info(response):
 4. Push to branch: `git push origin feature-name`
 5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
