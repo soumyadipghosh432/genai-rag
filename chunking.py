@@ -1,5 +1,4 @@
 from typing import List
-from langchain.text_splitter import CharacterTextSplitter
 import re
 
 def recursive_text_splitter(text: str, chunk_size: int, separators: List[str], debug: bool=False) -> List[str]:
