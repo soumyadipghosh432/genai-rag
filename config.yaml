@@ -1,0 +1,36 @@
+# Application Settings
+debug: true
+environment: "development"
+
+# Chat Guardrails
+guardrails:
+  enable_general_chat: true  # false = tool-only mode
+  max_conversation_length: 50
+  session_timeout_minutes: 30
+
+# LLM Configuration
+llm:
+  provider: "amazon_nova"  # "amazon_nova" or "gpt_oss"
+  amazon_nova:
+    region: "us-east-1"
+    model_id: "amazon.nova-micro-v1:0"
+  gpt_oss:
+    region: "us-west-2"
+    model_name: "your-model-name"
+
+# Tool Configuration
+tools:
+  enabled: true
+  delivery_tracker:
+    enabled: true
+    timeout_seconds: 30
+
+# Database Configuration
+database:
+  url: "sqlite:///data/chat_history.db"
+  echo: false  # SQLAlchemy logging
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  file: "data/logs/app.log"
